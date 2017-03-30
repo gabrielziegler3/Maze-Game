@@ -15,5 +15,10 @@ public:
     int getPositionY();
     void setPositionY();
 
+    void moveUp();
+    void moveDown();
+    void moveRight();
+    void moveLeft();
+
 };
 #endif

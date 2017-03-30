@@ -21,3 +21,12 @@ int Player::getPositionY(){
 void Player::setPositionY(){
     this->positionY = positionY;
 }
+
+void moveUp(){
+}
+void moveDown(){
+}
+void moveRight(){
+}
+void moveLeft(){
+}
