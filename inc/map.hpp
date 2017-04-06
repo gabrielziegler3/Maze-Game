@@ -3,10 +3,15 @@
 #include <iostream>
 
 class Map {
-
+private:
+    int height, width;
 
 public:
-    void loadMap();
+    int getHeight();
+    void setHeight(int height);
+    int getWidth();
+    void setWidth(int width);
 
+    void loadStage();
 };
 #endif

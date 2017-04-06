@@ -2,25 +2,53 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <string>
+#include <ncurses.h>
 
-using namespace std;
+int Map::getHeight(){
+    return height;
+}
+void Map::setHeight(int height){
+    this-> height = height;
+}
+int Map::getWidth(){
+    return width;
+}
+void Map::setWidth(int width){
+    this-> width = width;
+}
 
-char matrix[19][49];
+void Map::loadStage(){
+    initscr();
+    raw();
+    noecho();
 
-void Map::loadMap() {
-  int x, y;
-  system("clear");
-  ifstream in("../obj/mapa1.txt");
+    int x =0, y =0;
+    char matrix[x][y];
 
-  if (!in) {
-    cout << "Cannot open file.\n";
-    return;
-  }
+    std::ifstream stage1("doc/stage1.txt");
 
-  for (y = 0; y < 49; y++) {
-    for (x = 0; x < 19; x++) {
-      in >> matrix[x][y];
-      std::cout << matrix[x][y];
+    if (!stage1) {
+        std::cout << "Cannot open file.\n";
+        return;
     }
-  }
+
+    setWidth(51);
+    setHeight(21);
+
+    for (y = 0; y < getHeight(); y++) {
+        for (x = 0; x < getWidth(); x++) {
+            if(x == '\0'){
+                printw("\n");
+                refresh();
+            }
+            else{
+                stage1 >> matrix[x][y];
+                printw("%c", matrix[x][y]);
+                refresh();
+            }
+        }
+    }
+    getch();
+    endwin();
 }
