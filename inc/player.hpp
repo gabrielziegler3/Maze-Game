@@ -13,8 +13,8 @@ private:
 public:
     //Exemplo de SOBRECARGA de construtor
     Player();
-    Player(bool alive, bool winner, int life, int score);
-    ~Player();  
+    Player(bool alive, bool winner, int life, int score, int positionX, int positionY);
+    ~Player();
 
     //Exemplo de SOBRESCRITA de metodo da CLASSE ABSTRATA
     int getPositionX();

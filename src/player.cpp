@@ -4,11 +4,16 @@
 using namespace std;
 
 Player::Player(){
-
+    setSprite('@');
+    setLife(3);
+    setScore(0);
+    setAlive(true);
+    setWinner(false);
+    setPositionX(1);
+    setPositionY(1);
 }
 
-
-Player::Player(bool alive, bool winner, int life, int score){
+Player::Player(bool alive, bool winner, int life, int score, int positionX, int positionY){
     setAlive(alive);
     setWinner(winner);
     setLife(life);
@@ -61,10 +66,14 @@ void Player::setSprite(char sprite){
 }
 
 void Player::moveUp(){
+    setPositionY(positionY+1);
 }
 void Player::moveDown(){
+    setPositionY(positionY-1);
 }
 void Player::moveRight(){
+    setPositionX(positionX+1);
 }
 void Player::moveLeft(){
+    setPositionY(positionX-1);
 }
