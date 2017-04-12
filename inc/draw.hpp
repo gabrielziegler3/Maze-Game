@@ -5,10 +5,14 @@
 using namespace std;
 
 class Draw {
-
+private:
+    
 public:
+    Draw();
+
     void drawPlayer();
     void drawTrap();
     void drawBonus();
+    void drawMap();
 };
 #endif

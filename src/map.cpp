@@ -25,7 +25,7 @@ void Map::loadStage(){
 
     int x =0, y =0;
     char matrix[x][y];
-
+    
     std::ifstream stage1("doc/stage1.txt");
 
     if (!stage1) {
@@ -40,12 +40,10 @@ void Map::loadStage(){
         for (x = 0; x < getWidth(); x++) {
             if(x == '\0'){
                 printw("\n");
-                refresh();
             }
             else{
                 stage1 >> matrix[x][y];
                 printw("%c", matrix[x][y]);
-                refresh();
             }
         }
     }
