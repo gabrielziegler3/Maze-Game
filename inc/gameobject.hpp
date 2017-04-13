@@ -24,9 +24,6 @@ public:
     virtual std::string getColour();
     virtual void setColour(std::string colour);
 
-    virtual void moveUp();
-    virtual void moveDown();
-    virtual void moveRight();
-    virtual void moveLeft();
+    virtual void move();
 };
 #endif

@@ -27,6 +27,7 @@ void Menu::mainMenu(){
         break;
 
         case 2:
+            std::cout << "Exiting game." << '\n';
             exit(1);
         break;
     }

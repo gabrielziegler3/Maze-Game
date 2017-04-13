@@ -18,16 +18,13 @@ public:
 
     //Exemplo de SOBRESCRITA de metodo da CLASSE ABSTRATA
     int getPositionX();
-    void setPositionX(int positionX);
+    void setPositionX(int valor);
     int getPositionY();
-    void setPositionY(int positionY);
+    void setPositionY(int valor);
     char getSprite();
     void setSprite(char sprite);
 
-    void moveUp();
-    void moveDown();
-    void moveRight();
-    void moveLeft();
+    void move();
 
     bool getAlive();
     void setAlive(bool alive);

@@ -1,5 +1,6 @@
 #include "../inc/player.hpp"
 #include <iostream>
+#include <ncurses.h>
 
 using namespace std;
 
@@ -49,14 +50,14 @@ void Player::setScore(int score){
 int Player::getPositionX(){
     return positionX;
 }
-void Player::setPositionX(int positionX){
-    this-> positionX = positionX;
+void Player::setPositionX(int valor){
+    this-> positionX += valor;
 }
 int Player::getPositionY(){
     return positionY;
 }
-void Player::setPositionY(int positionY){
-    this-> positionY = positionY;
+void Player::setPositionY(int valor){
+    this-> positionY += valor;
 }
 char Player::getSprite(){
     return sprite;
@@ -65,15 +66,19 @@ void Player::setSprite(char sprite){
     this->sprite = sprite;
 }
 
-void Player::moveUp(){
-    setPositionY(positionY+1);
-}
-void Player::moveDown(){
-    setPositionY(positionY-1);
-}
-void Player::moveRight(){
-    setPositionX(positionX+1);
-}
-void Player::moveLeft(){
-    setPositionY(positionX-1);
+void Player::move(){
+    char direction = 'l';
+
+    direction = getch();
+
+    if(direction == 'w'){
+		this->setPositionY(-1);
+	} else if (direction == 's'){
+		this->setPositionY(1);
+	} else if (direction == 'a'){
+		this->setPositionX(-1);
+	} else if (direction == 'd'){
+		this->setPositionX(1);
+	}
+    refresh();
 }

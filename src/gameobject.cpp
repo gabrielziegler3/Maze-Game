@@ -29,11 +29,5 @@ void GameObject::setColour(std::string colour){
     this->colour=colour;
 }
 
-void GameObject::moveUp(){
-}
-void GameObject::moveDown(){
-}
-void GameObject::moveRight(){
-}
-void GameObject::moveLeft(){
+void GameObject::move(){
 }
