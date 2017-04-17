@@ -4,14 +4,17 @@
 
 class Map {
 private:
-    int height, width;
+    char **matrix;
+    int width, length;
 
 public:
-    int getHeight();
-    void setHeight(int height);
+    Map();
+    // void setMatrix(char ** range);
+    char **getMatrix();
+    void setMatrix(char **matrix);
     int getWidth();
     void setWidth(int width);
-
-    void loadStage();
+    int getLength();
+    void setLength(int length);
 };
 #endif

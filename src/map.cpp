@@ -5,48 +5,63 @@
 #include <string>
 #include <ncurses.h>
 
-int Map::getHeight(){
-    return height;
+using namespace std;
+
+Map::Map(){
+
 }
-void Map::setHeight(int height){
-    this-> height = height;
-}
+
 int Map::getWidth(){
-    return width;
+	return width;
 }
 void Map::setWidth(int width){
-    this-> width = width;
+	this->width = width;
+}
+int Map::getLength(){
+	return length;
+}
+void Map::setLength(int length){
+	this->length = length;
 }
 
-void Map::loadStage(){
-    initscr();
-    raw();
-    noecho();
+void Map::setMatrix(char **matrix){
+	ifstream map ("doc/stage1.txt");
 
-    int x =0, y =0;
-    char matrix[x][y];
-    
-    std::ifstream stage1("doc/stage1.txt");
+	string aux;
+	matrix = new char*[20];
 
-    if (!stage1) {
-        std::cout << "Cannot open file.\n";
-        return;
-    }
+	for(int i = 0; i < 20; i++){
+		getline(map, aux);
+		matrix[i] = new char[50];
+		for(int u = 0; u < 50; u++){
+			matrix[i][u] = aux[u];
+		}
+	}
+	map.close();
+}
 
-    setWidth(51);
-    setHeight(21);
+char ** Map::getMatrix(){
+	int x,y;
+	string aux;
+	ifstream map ("doc/stage1.txt");
 
-    for (y = 0; y < getHeight(); y++) {
-        for (x = 0; x < getWidth(); x++) {
-            if(x == '\0'){
-                printw("\n");
-            }
-            else{
-                stage1 >> matrix[x][y];
-                printw("%c", matrix[x][y]);
-            }
-        }
-    }
-    getch();
-    endwin();
+	setWidth(50);
+	setLength(50);
+
+	if(!map){
+		std::cout << "Error: Could not find the map file" << '\n';
+	}
+
+	matrix = new char*[getWidth()];
+
+	for(x = 0; x < getWidth(); x++){
+		matrix[x] = new char[getLength()];
+	}
+	for(x = 0; x < getWidth(); x++){
+		for(y = 0; y < getLength(); y++){
+			map >> matrix[x][y];
+		}
+	}
+	map.close();
+	return matrix;
 }
