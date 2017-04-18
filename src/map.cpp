@@ -11,33 +11,24 @@ Map::Map(){
 
 }
 
-int Map::getWidth(){
-	return width;
+int Map::getColumn(){
+	return column;
 }
-void Map::setWidth(int width){
-	this->width = width;
+void Map::setColumn(int column){
+	this->column = column;
 }
-int Map::getLength(){
-	return length;
+int Map::getRow(){
+	return row;
 }
-void Map::setLength(int length){
-	this->length = length;
+void Map::setRow(int row){
+	this->row = row;
 }
 
+void Map::setPlayer(int posx, int posy){
+	matrix[posx][posy] = '@';
+}
 void Map::setMatrix(char **matrix){
-	ifstream map ("doc/stage1.txt");
-
-	string aux;
-	matrix = new char*[20];
-
-	for(int i = 0; i < 20; i++){
-		getline(map, aux);
-		matrix[i] = new char[50];
-		for(int u = 0; u < 50; u++){
-			matrix[i][u] = aux[u];
-		}
-	}
-	map.close();
+	this-> matrix = matrix;
 }
 
 char ** Map::getMatrix(){
@@ -45,21 +36,19 @@ char ** Map::getMatrix(){
 	string aux;
 	ifstream map ("doc/stage1.txt");
 
-	setWidth(50);
-	setLength(50);
+	setColumn(20);
+	setRow(50);
 
 	if(!map){
 		std::cout << "Error: Could not find the map file" << '\n';
 	}
 
-	matrix = new char*[getWidth()];
+	matrix = new char*[getRow()];
 
-	for(x = 0; x < getWidth(); x++){
-		matrix[x] = new char[getLength()];
-	}
-	for(x = 0; x < getWidth(); x++){
-		for(y = 0; y < getLength(); y++){
-			map >> matrix[x][y];
+	for(x = 0; x < getColumn(); x++){
+		matrix[x] = new char[getRow()];
+			for(y = 0; y < getRow(); y++){
+				map >> matrix[x][y];
 		}
 	}
 	map.close();

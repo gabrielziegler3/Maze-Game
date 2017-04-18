@@ -5,16 +5,17 @@
 class Map {
 private:
     char **matrix;
-    int width, length;
+    int column, row;
 
 public:
     Map();
     // void setMatrix(char ** range);
     char **getMatrix();
     void setMatrix(char **matrix);
-    int getWidth();
-    void setWidth(int width);
-    int getLength();
-    void setLength(int length);
+    int getColumn();
+    void setColumn(int column);
+    int getRow();
+    void setRow(int row);
+    void setPlayer(int posx, int posy);
 };
 #endif
