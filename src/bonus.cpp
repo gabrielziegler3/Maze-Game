@@ -24,6 +24,5 @@ char Bonus::getSprite(){
 void Bonus::setSprite(char sprite){
     this->sprite = sprite;
 }
-
 void Bonus::move(){
 }

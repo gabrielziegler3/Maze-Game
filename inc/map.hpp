@@ -6,16 +6,19 @@ class Map {
 private:
     char **matrix;
     int column, row;
+    // char matrix[20][50];
 
 public:
     Map();
-    // void setMatrix(char ** range);
     char **getMatrix();
     void setMatrix(char **matrix);
+    // char getMatrix();
+    // void setMatrix(char matrix[20][50]);
     int getColumn();
     void setColumn(int column);
     int getRow();
     void setRow(int row);
     void setPlayer(int posx, int posy);
+    void addElement(int posx, int posy, char sprite);
 };
 #endif

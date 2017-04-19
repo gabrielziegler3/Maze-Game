@@ -14,14 +14,23 @@ void Menu::mainMenu(){
     std::cout << "\tAND STRIVE TO REACH THE *LIST OF THE LEGENDS* IN THE END OF THE GAME\n" << '\n';
     std::cout << "\n" << '\n';
     std::cout << "****************************************##****************************************\n";
-    std::cout << " 1 - Start the game.\n";
-    std::cout << " 2 - Exit.\n\n";
-    std::cout << " Enter your choice and press enter: ";
-    std::cin >> choice;
+    std::cout << "1 - Start the game.\n";
+    std::cout << "2 - Exit.\n\n";
+    std::cout << "Enter your choice and press enter: ";
+    // std::cin >> choice;
     while (choice!= 1 && choice != 2) {
-        std::cout << "Please enter 1 to proceed or enter 2 to quit" << '\n';
-        std::cin >> choice;
-    }
+        try{
+            std::cout << "Please enter 1 to proceed or enter 2 to quit" << '\n';
+            std::cin >> choice;
+        }
+        catch(char a){
+            throw('c');
+            cout << "Excecao Capturada do tipo CHAR" << endl;
+        }
+        catch(...) {
+            cout << "Excecao GENERICA"<< endl;
+        }
+
     switch (choice){
         case 1:
         break;
@@ -31,4 +40,5 @@ void Menu::mainMenu(){
             exit(1);
         break;
     }
+}
 }

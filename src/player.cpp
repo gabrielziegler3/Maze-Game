@@ -14,7 +14,7 @@ Player::Player(){
     setPositionY(1);
 }
 
-Player::Player(bool alive, bool winner, int life, int score, int positionX, int positionY){
+Player::Player(char sprite, bool alive, bool winner, int life, int score, int positionX, int positionY){
     setAlive(alive);
     setWinner(winner);
     setLife(life);
@@ -50,14 +50,14 @@ void Player::setScore(int score){
 int Player::getPositionX(){
     return positionX;
 }
-void Player::setPositionX(int valor){
-    this-> positionX += valor;
+void Player::setPositionX(int positionX){
+    this->positionX = positionX;
 }
 int Player::getPositionY(){
     return positionY;
 }
-void Player::setPositionY(int valor){
-    this-> positionY += valor;
+void Player::setPositionY(int positionY){
+    this->positionY = positionY;
 }
 char Player::getSprite(){
     return sprite;
@@ -72,13 +72,13 @@ void Player::move(){
     direction = getch();
 
     if(direction == 'w'){
-		this->setPositionY(-1);
+		this->setPositionY(getPositionY()-1);
 	} else if (direction == 's'){
-		this->setPositionY(1);
+		this->setPositionY(getPositionY()+1);
 	} else if (direction == 'a'){
-		this->setPositionX(-1);
+		this->setPositionX(getPositionX()-1);
 	} else if (direction == 'd'){
-		this->setPositionX(1);
+		this->setPositionX(getPositionX()+1);
 	}
     refresh();
 }
