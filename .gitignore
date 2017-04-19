@@ -36,3 +36,8 @@
 # Documents
 *.txt
 *doc/
+
+bin/*
+obj/*
+*.swp
+*.gch
