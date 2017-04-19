@@ -1,0 +1,15 @@
+- Por que quando tiro as inicializacoes do ncurses da funcao e passo para a main o load do map buga.
+
+- Como imprimir todos os objetos na tela em cima do mapa
+
+- usar Try and Catch para o menu
+
+- Como checar as colisoes
+
+- Error do Make no final da execucao
+
+- Como importar os Headers corretamente
+
+- Onde usar o refresh();
+
+- Heranca da classe virtual Game Object
