@@ -12,7 +12,7 @@ class Draw {
 private:
 public:
     Draw();
-    void drawPlayer(char **matrix, char sprite, int posx, int posy);
+    // void drawPlayer(char **matrix, char sprite, int posx, int posy);
     // void drawPlayer(char sprite, int posx, int posy);
     // void drawPlayer2(char **matrix);
     // void drawPlayer(char matrix[20][50]);
