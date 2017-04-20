@@ -1,51 +1,25 @@
 # EP1 - OO (UnB - Gama)
 
-Este projeto consiste em um jogo de labirinto em C++
+Este projeto consiste em um jogo de labirinto em C++ produzido por Gabriel Ziegler para a disciplina de Orientacao a objetos na Universidade de Brasilia.
 
+O player é representado no jogo pelo caracter '@'.
 
-<!-- Importar mapa
-O aluno importou, corretamente, de um arquivo .txt o mapa do jogo.
-1.00 -->
+O player deve evitar encostar nas armadilhas representadas pelos caracteres '#' que irao se movimentar aleatoriamente pelo mapa
 
-Instanciar objetos
-Instanciar no minimo o mapa, players, traps e pontos no jogo.
-1.00
+Bonus podem ser pegos quando o player encostar em caracteres do tipo '&' para receber diferentes tipos de bonus.
 
-Drawn
-A cada iteração no main loop o frame é desenhado de forma correta.
-1.00
+Para vencer basta levar o player para o 8, porem o player perde uma vida a cada colisao com armadilhas, caso as vidas cheguem a 0 é decretado o Game Over.
 
-Input
-A cada iteração no main loop o input deve ser detectado e resolvido.
-1.00
+Ao fim do jogo se tiver passado com sucesso tera a chance de deixar seu nome na Lista dos Lendarios, reservada apenas para aqueles
 
-Colisões
-Detecção e resolução de colisões a cada iteração no main loop.
-1.00
+que merecem estar la.
 
-Regras de Jogo
-O jogo deve possuir condição de vitória, derrota, pontuação e rank.
-1.00
+para movimentar o player utilize:
 
-<!-- Criação de Classes
-O jogo deve possuir pelo menos todas as classes que foram listadas na descrição do exercício.
-1.50 -->
+W - para mover para cima
 
-<!-- Herança
-Herança entre, no mínimo, três classes.
-1.50 -->
+S - para mover para baixo
 
-<!-- Polimorfismo
-No código deve haver, no mínimo, um caso de polimorfismo.
-0.50 -->
+A - para mover para esquerda
 
-<!-- Repositório
-Utilização correta do repositório, commits claros e frequentes.
-0.50 -->
-
-TOTAL
-10.0
-
-Pontuação Extra
-Pontuação referente a criatividade do aluno para expansão da jogabilidade do game.
-2.00
+D - para mover para direita
