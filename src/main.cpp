@@ -23,24 +23,24 @@ int main(int argc, char const *argv[]) {
     // Bonus * bonus = new Bonus();
 
     menu->mainMenu();
-    // map->setPlayer(1,1);
-
-    //iniciacao do game
+    map->allocMatrix();
     while(player->getLife() > 0){
+        // iniciacao do game
         clear();
         initscr(); // switch terminal screen to fullscreen curses mode
         cbreak(); // disable line buffering so that we get raw keystrokes
         keypad(stdscr, TRUE); // enable keypad mode (for arrow and fn keys)
         noecho(); // do not print the user's keystrokes to the screen
         curs_set(0); // make the cursor invisible
+        printw("Life: [%d]\n\n", player->getLife());
         // map->addElement(1,1,'@');
+        map->addElement(player->getPositionX(), player->getPositionY(), player->getSprite());
         draw->drawMap(map->getMatrix());
-        draw->drawPlayer(map->getMatrix(), player->getPositionX(), player->getPositionY(),player->getSprite());
+        player->move();
+        // draw->drawPlayer(map->getMatrix(), player->getPositionX(), player->getPositionY(),player->getSprite());
         // draw->drawPlayer(map->getRange(), player->getSprite(), player->getPositionX(), player->getPositionY());
-        std::cout << "\nLife: [" << player->getLife() << "]" << '\n';
         // player->setLife(0);
         refresh();
-        getch();
         endwin();
     }
 
@@ -50,6 +50,6 @@ int main(int argc, char const *argv[]) {
     delete(draw);
     // delete(bonus);
     // delete(trap);
-    // delete[] map->getMatrix();
+    delete[] map->getMatrix();
     return 0;
 }
