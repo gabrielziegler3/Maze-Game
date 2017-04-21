@@ -5,6 +5,8 @@ using namespace std;
 
 Trap::Trap(){
     setSprite('#');
+    setPositionX(2);
+    setPositionY(2);
 }
 
 Trap::~Trap(){}

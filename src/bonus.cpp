@@ -2,7 +2,9 @@
 #include <iostream>
 
 Bonus::Bonus(){
-    setSprite('%');
+    setSprite('&');
+    setPositionX(2);
+    setPositionY(3);
 }
 Bonus::~Bonus(){}
 

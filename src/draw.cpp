@@ -1,9 +1,9 @@
-#include <iostream>
 #include "../inc/draw.hpp"
 #include "../inc/map.hpp"
 #include "../inc/player.hpp"
 #include "../inc/bonus.hpp"
 #include "../inc/trap.hpp"
+#include <iostream>
 #include <ncurses.h>
 #include <cstdlib>
 #include <fstream>

@@ -1,6 +1,6 @@
+#include "../inc/player.hpp"
 #include <iostream>
 #include <ncurses.h>
-#include "../inc/player.hpp"
 
 using namespace std;
 
@@ -95,28 +95,3 @@ switch (getch()){
     break;
     }
 }
-// void Player::move(){
-//     char direction = 'l';
-//
-//     direction = getch();
-//
-//     if(direction == 'w'){
-// 		this->setPositionX(getPositionX()-1);
-// 	} else if (direction == 's'){
-// 		this->setPositionX(getPositionX()+1);
-// 	} else if (direction == 'a'){
-// 		this->setPositionY(getPositionY()-1);
-// 	} else if (direction == 'd'){
-// 		this->setPositionY(getPositionY()+1);
-// 	}
-// 	char sprite = map->getPosition(positionX, positionY);
-// 	if(sprite == '#'){
-// 		setLife(getLife()-1);
-// 		if(getLife()= 0){
-// 			setAlive(FALSE);
-// 		}
-// 	}
-// 	else if (sprite == '&'){
-// 		setScore(getScore()+100);
-// 	}
-// }

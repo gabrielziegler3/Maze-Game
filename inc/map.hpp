@@ -8,15 +8,13 @@ class Map {
 private:
     char **matrix;
     int column, row;
-    // char matrix[20][50];
 
 public:
     Map();
     char **getMatrix();
     char **allocMatrix();
     void setMatrix(char **matrix);
-    // char getMatrix();
-    // void setMatrix(char matrix[20][50]);
+
     int getColumn();
     void setColumn(int column);
     int getRow();
