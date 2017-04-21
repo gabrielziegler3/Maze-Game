@@ -11,45 +11,61 @@
 #include <ncurses.h>
 #include <fstream>
 #include <cstdlib>
-#include <stdio_ext.h>
 
 int main(int argc, char const *argv[]) {
-    //Sao instanciados objetos de todas classes necessarias
+    //Sao instanciados objetos de todas classes
     Draw * draw = new Draw();
     Menu * menu = new Menu();
     Map * map = new Map();
     Player * player = new Player('@', TRUE, FALSE, 3, 0, 2, 2);
-    // Trap * trap = new Trap();
-    // Bonus * bonus = new Bonus();
+    Trap * trap = new Trap[10];
+    Bonus * bonus = new Bonus[10];
+    Collisions * collision = new Collisions();
 
-    menu->mainMenu();
-    map->allocMatrix();
-    while(player->getLife() > 0){
+    char ch=menu->mainMenu();
+    		switch(ch) {
+    			case 1:
+    				break;
+    			case 2:
+    				break;
+                case 3:
+                    endwin();
+                    clear();
+                    system("clear");
+                    break;
+                }
+    while(player->getAlive() == TRUE){
         // iniciacao do game
         clear();
         initscr(); // switch terminal screen to fullscreen curses mode
+        start_color();
+        init_pair(1, COLOR_BLACK, COLOR_CYAN);
+        init_pair(2, COLOR_WHITE, COLOR_GREEN);
         cbreak(); // disable line buffering so that we get raw keystrokes
         keypad(stdscr, TRUE); // enable keypad mode (for arrow and fn keys)
         noecho(); // do not print the user's keystrokes to the screen
         curs_set(0); // make the cursor invisible
+        attron(COLOR_PAIR(1));
+        printw("Score: [%d]\n", player->getScore());
         printw("Life: [%d]\n\n", player->getLife());
-        // map->addElement(1,1,'@');
+        attroff(COLOR_PAIR(1));
+        attron(COLOR_PAIR(2));
+        map->allocMatrix();
         map->addElement(player->getPositionX(), player->getPositionY(), player->getSprite());
+        draw->drawBonus(bonus, map);
+        draw->drawTrap(trap, map);
         draw->drawMap(map->getMatrix());
         player->move();
-        // draw->drawPlayer(map->getMatrix(), player->getPositionX(), player->getPositionY(),player->getSprite());
-        // draw->drawPlayer(map->getRange(), player->getSprite(), player->getPositionX(), player->getPositionY());
-        // player->setLife(0);
+        collision->hitBonus(player, player->getPositionX(), player->getPositionY());
+        collision->hitTrap(player, menu, player->getPositionX(), player->getPositionY());
+        // map->addElement(player->getPositionX(), player->getPositionY(), '-');
+        if(player->getLife()==0){
+            menu->gameOver(player);
+            player->setAlive(false);
+        }
         refresh();
         endwin();
     }
 
-    delete(menu);
-    delete(player);
-    delete(map);
-    delete(draw);
-    // delete(bonus);
-    // delete(trap);
-    delete[] map->getMatrix();
     return 0;
 }

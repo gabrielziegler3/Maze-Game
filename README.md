@@ -16,10 +16,12 @@ que merecem estar la.
 
 para movimentar o player utilize:
 
-W - para mover para cima
+W ou ↑- para mover para cima
 
-S - para mover para baixo
+S ou ↓- para mover para baixo
 
-A - para mover para esquerda
+A ou ← - para mover para esquerda
 
-D - para mover para direita
+D ou → - para mover para direita
+
+JOGUE COM O TERMINAL EM TELA CHEIA! :)
