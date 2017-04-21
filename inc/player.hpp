@@ -2,6 +2,8 @@
 #define PLAYER_HPP
 #include "gameobject.hpp"
 #include <iostream>
+#include "map.hpp"
+#include "collisions.hpp"
 
 class Player : public GameObject{
 private:

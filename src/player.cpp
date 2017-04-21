@@ -1,6 +1,6 @@
-#include "../inc/player.hpp"
 #include <iostream>
 #include <ncurses.h>
+#include "../inc/player.hpp"
 
 using namespace std;
 
@@ -70,17 +70,53 @@ void Player::setSprite(char sprite){
 }
 
 void Player::move(){
-    char direction = 'l';
-
-    direction = getch();
-
-    if(direction == 'w'){
-		this->setPositionX(getPositionX()-1);
-	} else if (direction == 's'){
-		this->setPositionX(getPositionX()+1);
-	} else if (direction == 'a'){
+switch (getch()){
+    case 'w':
+    case 'W':
+    case KEY_UP:
+        this->setPositionX(getPositionX()-1);
+    break;
+    case 's':
+    case 'S':
+    case KEY_DOWN:
+        this->setPositionX(getPositionX()+1);
+    break;
+    case 'a':
+    case 'A':
+    case KEY_LEFT:
 		this->setPositionY(getPositionY()-1);
-	} else if (direction == 'd'){
-		this->setPositionY(getPositionY()+1);
-	}
+    break;
+    case 'd':
+    case 'D':
+    case KEY_RIGHT:
+ 		this->setPositionY(getPositionY()+1);
+    break;
+    default:
+    break;
+    }
 }
+// void Player::move(){
+//     char direction = 'l';
+//
+//     direction = getch();
+//
+//     if(direction == 'w'){
+// 		this->setPositionX(getPositionX()-1);
+// 	} else if (direction == 's'){
+// 		this->setPositionX(getPositionX()+1);
+// 	} else if (direction == 'a'){
+// 		this->setPositionY(getPositionY()-1);
+// 	} else if (direction == 'd'){
+// 		this->setPositionY(getPositionY()+1);
+// 	}
+// 	char sprite = map->getPosition(positionX, positionY);
+// 	if(sprite == '#'){
+// 		setLife(getLife()-1);
+// 		if(getLife()= 0){
+// 			setAlive(FALSE);
+// 		}
+// 	}
+// 	else if (sprite == '&'){
+// 		setScore(getScore()+100);
+// 	}
+// }
