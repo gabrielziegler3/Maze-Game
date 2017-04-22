@@ -10,7 +10,7 @@
 
 Draw::Draw(){}
 
-void Draw::drawTrap(Trap * trap, Map *map){
+void Draw::drawTrapRandom(Trap * trap, Map *map){
     for(int i=0; i<10; i++){
         trap[i].setPositionX(rand()%18+1);
         trap[i].setPositionY(rand()%48+1);
@@ -18,10 +18,21 @@ void Draw::drawTrap(Trap * trap, Map *map){
     }
 }
 
-void Draw::drawBonus(Bonus * bonus, Map *map){
+void Draw::drawBonusRandom(Bonus * bonus, Map *map){
     for(int i=0; i<10;i++){
         bonus[i].setPositionX(rand()%18+1);
         bonus[i].setPositionY(rand()%48+1);
+        map->addElement(bonus[i].getPositionX(), bonus[i].getPositionY(), bonus[i].getSprite());
+    }
+}
+
+void Draw::drawTrap(Trap * trap, Map *map){
+    for(int i=0; i<10;i++){
+        map->addElement(trap[i].getPositionX(), trap[i].getPositionY(), trap[i].getSprite());
+    }
+}
+void Draw::drawBonus(Bonus * bonus, Map *map){
+    for(int i=0; i<10;i++){
         map->addElement(bonus[i].getPositionX(), bonus[i].getPositionY(), bonus[i].getSprite());
     }
 }
