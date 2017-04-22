@@ -13,5 +13,6 @@ public:
     void gameOver(Player * player);
     void printDragon();
     void printText();
+    void printWinner(Player * player);
 };
 #endif

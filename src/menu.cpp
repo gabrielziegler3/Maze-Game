@@ -63,6 +63,21 @@ void Menu::printText(){
     mvprintw(32, 100, "Exit Game.");
 }
 
+void Menu::printWinner(Player * player){
+    std::string aux;
+    clear();
+    printDragon();
+    mvprintw(20, 100, "CONGRATULATIONS, YOU HAVE FINISHED ALL THE MAZE COURSE\n");
+    mvprintw(21, 100, "\tNOW YOU GET THE CHANCE TO SIGN YOUR NAME IN THE \n");
+    mvprintw(22, 100, "****LEGENDS LIST****\n");
+    mvprintw(23, 100, "SCORE: [%d]\n", player->getScore());
+    mvprintw(24, 100, "\t\tSIGN NAME: \n");
+    curs_set(1);
+    mvscanw(25, 100, "%s", &aux);
+    player->setName(aux);
+    getch();
+}
+
 int Menu::mainMenu() {
 	int c=0, ch;
 	initscr();
@@ -154,9 +169,10 @@ void Menu::gameOver(Player * player){
     mvprintw(16, 17, "  | $$  | $$  \\  $$$/  | $$      | $$  \\ $$\n");
     mvprintw(17, 17, "  |  $$$$$$/   \\  $/   | $$$$$$$$| $$  | $$\n");
     mvprintw(18, 17, "   \\______/     \\_/    |________/|__/  |__/\n");
-    mvprintw(20, 35, "Score: %d", player->getScore());
     attron(A_STANDOUT);
+    mvprintw(20, 35, "Score: %d", player->getScore());
     attroff(A_STANDOUT);
+    mvprintw(23, 35, "Press any key");
     getch();
     system("clear");
 }
