@@ -23,11 +23,11 @@ void Map::setRow(int row){
 	this->row = row;
 }
 
-void Map::setMatrix(char **matrix){
-	this-> matrix = matrix;
+char Map::positionMatrix(int posx, int posy){
+	return rawMatrix[posx][posy];
 }
 
-char ** Map::allocMatrix(){
+char ** Map::allocRawMatrix(){
 	int x,y;
 	ifstream map ("doc/stage1.txt");
 
@@ -38,22 +38,22 @@ char ** Map::allocMatrix(){
 		std::cout << "Error: Could not find the map file" << '\n';
 	}
 
-	matrix = new char*[getRow()];
+	rawMatrix = new char*[getRow()];
 
-	for(x = 0; x < getColumn(); x++){
-		matrix[x] = new char[getRow()];
-			for(y = 0; y < getRow(); y++){
-				map >> matrix[x][y];
+	for(y = 0; y < getColumn(); y++){
+		rawMatrix[y] = new char[getRow()];
+			for(x = 0; x < getRow(); x++){
+				map >> rawMatrix[y][x];
 		}
 	}
 	map.close();
-	return matrix;
+	return rawMatrix;
 }
 
-char ** Map::getMatrix(){
-	return matrix;
+char ** Map::getRawMatrix(){
+	return rawMatrix;
 }
 
 void Map::addElement(int posx, int posy, char sprite){
-		this->matrix[posx][posy] = sprite;
+		this->rawMatrix[posx][posy] = sprite;
 }

@@ -6,14 +6,14 @@
 
 class Map {
 private:
-    char **matrix;
+    char **rawMatrix;
     int column, row;
 
 public:
     Map();
-    char **getMatrix();
-    char **allocMatrix();
-    void setMatrix(char **matrix);
+    char **getRawMatrix();
+    char **allocRawMatrix();
+    char positionMatrix(int posx, int posy);
 
     int getColumn();
     void setColumn(int column);
