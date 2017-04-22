@@ -3,6 +3,7 @@
 #include "player.hpp"
 #include "map.hpp"
 #include "menu.hpp"
+#include "rankinglist.hpp"
 #include <iostream>
 
 using namespace std;
@@ -12,12 +13,8 @@ public:
     Collisions();
     ~Collisions();
 
-    void hitWallUp(Player * player, int posx, int posy);
-    void hitWallDown(Player * player, int posx, int posy);
-    void hitWallLeft(Player * player, int posx, int posy);
-    void hitWallRight(Player * player, int posx, int posy);
-    void hitTrap(Player * player, Menu * menu, int posx, int posy);
-    void hitBonus(Player * player, int posx, int posy);
-    void hitEnd(Player * player, Menu * menu, int posx, int posy);
+    void hitTrap(Player * player, Map* map, Menu * menu, int posx, int posy);
+    void hitBonus(Player * player, Map* map, int posx, int posy);
+    void hitEnd(Player * player, Map* map, Menu * menu, RankingList * ranking, int posx, int posy);
 };
 #endif

@@ -1,5 +1,4 @@
 #include "../inc/collisions.hpp"
-#include "../inc/player.hpp"
 #include <ncurses.h>
 #include <iostream>
 
@@ -9,39 +8,15 @@ Collisions::Collisions(){
 
 Collisions::~Collisions(){}
 
-void Collisions::hitWallUp(Player * player, int posx, int posy){
-    if(posx && posy == '='){
-        return;
-    }
-}
 
-void Collisions::hitWallDown(Player * player, int posx, int posy){
-    if(posx && posy == '='){
-        return;
-    }
-}
-
-void Collisions::hitWallLeft(Player * player, int posx, int posy){
-    if(posx && posy == '='){
-        return;
-    }
-}
-
-void Collisions::hitWallRight(Player * player, int posx, int posy){
-    if(posx && posy == '='){
-        return;
-    }
-}
-
-void Collisions::hitBonus(Player * player, int posx, int posy){
-    if(posx && posy == '&'){
+void Collisions::hitBonus(Player * player, Map * map, int posx, int posy){
+    if(map->positionMatrix(player->getPositionY(), player->getPositionX()) == '&'){
         player->setScore(player->getScore()+100);
-
     }
 }
 
-void Collisions::hitTrap(Player * player, Menu * menu, int posx, int posy){
-    if(posx && posy == '#'){
+void Collisions::hitTrap(Player * player, Map * map ,Menu * menu, int posx, int posy){
+    if(map->positionMatrix(player->getPositionY(), player->getPositionX()) == '#'){
         player->setLife(player->getLife()-1);
         if(player->getLife()== 0){
             menu->gameOver(player);
@@ -50,6 +25,9 @@ void Collisions::hitTrap(Player * player, Menu * menu, int posx, int posy){
     }
 }
 
-void Collisions::hitEnd(Player * player, Menu * menu, int posx, int posy){
-
+void Collisions::hitEnd(Player * player, Map * map, Menu * menu, RankingList * ranking, int posx, int posy){
+    if(map->positionMatrix(player->getPositionY(), player->getPositionX()) == '8'){
+        menu->printWinner(player);
+        ranking->writeList(player);
+    }
 }
