@@ -14,7 +14,7 @@ Player::Player(){
     setPositionY(1);
 }
 
-Player::Player(char sprite, bool alive, bool winner, int life, int score, int positionX, int positionY){
+Player::Player(char sprite, bool alive, bool winner, int life, int score, int positionX, int positionY, std::string name){
     setSprite(sprite);
     setAlive(alive);
     setWinner(winner);
@@ -22,6 +22,7 @@ Player::Player(char sprite, bool alive, bool winner, int life, int score, int po
     setScore(score);
     setPositionX(positionX);
     setPositionY(positionY);
+    setName(name);
 }
 
 Player::~Player(){}
@@ -69,28 +70,47 @@ void Player::setSprite(char sprite){
     this->sprite = sprite;
 }
 
-void Player::move(){
+std::string Player::getName(){
+    return name;
+}
+void Player::setName(std::string name){
+    this->name = name;
+}
+
+void Player::move(Map * map){
 switch (getch()){
     case 'w':
     case 'W':
     case KEY_UP:
-        this->setPositionX(getPositionX()-1);
+    if(map->positionMatrix(getPositionY()-1, getPositionX()) != '='){
+        this->setPositionY(getPositionY()-1);
+    }
     break;
+
     case 's':
     case 'S':
     case KEY_DOWN:
-        this->setPositionX(getPositionX()+1);
+    if(map->positionMatrix(getPositionY()+1, getPositionX()) != '='){
+        this->setPositionY(getPositionY()+1);
+    }
     break;
+
     case 'a':
     case 'A':
     case KEY_LEFT:
-		this->setPositionY(getPositionY()-1);
+    if(map->positionMatrix(getPositionY(), getPositionX()-1) != '='){
+		this->setPositionX(getPositionX()-1);
+    }
     break;
+
     case 'd':
     case 'D':
     case KEY_RIGHT:
- 		this->setPositionY(getPositionY()+1);
+    if(map->positionMatrix(getPositionY(), getPositionX()+1) != '='){
+ 		this->setPositionX(getPositionX()+1);
+    }
     break;
+
     default:
     break;
     }
