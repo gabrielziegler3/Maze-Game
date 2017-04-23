@@ -5,6 +5,7 @@ Bonus::Bonus(){
     setSprite('&');
     setPositionX(2);
     setPositionY(3);
+    setBonusScore(100);
 }
 Bonus::~Bonus(){}
 
@@ -26,5 +27,10 @@ char Bonus::getSprite(){
 void Bonus::setSprite(char sprite){
     this->sprite = sprite;
 }
-void Bonus::move(){
+
+int Bonus::getBonusScore(){
+    return bonusScore;
+}
+void Bonus::setBonusScore(int bonusScore){
+    this->bonusScore = bonusScore;
 }

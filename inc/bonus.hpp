@@ -5,7 +5,7 @@
 
 class Bonus : public GameObject {
 private:
-
+    int bonusScore;
 public:
     Bonus();
     ~Bonus();
@@ -17,6 +17,7 @@ public:
     char getSprite();
     void setSprite(char sprite);
 
-    void move();
+    int getBonusScore();
+    void setBonusScore(int bonusScore);
 };
 #endif

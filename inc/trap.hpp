@@ -5,6 +5,8 @@
 
 class Trap : public GameObject {
 
+private:
+    int hit;
 
 public:
     Trap();
@@ -16,7 +18,7 @@ public:
     void setPositionY(int positionY);
     char getSprite();
     void setSprite(char sprite);
-
-    void move();
+    int getHit();
+    void setHit(int hit);
 };
 #endif

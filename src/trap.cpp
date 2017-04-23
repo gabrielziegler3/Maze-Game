@@ -7,6 +7,7 @@ Trap::Trap(){
     setSprite('#');
     setPositionX(2);
     setPositionY(2);
+    setHit(1);
 }
 
 Trap::~Trap(){}
@@ -30,5 +31,9 @@ void Trap::setSprite(char sprite){
     this->sprite = sprite;
 }
 
-void Trap::move(){
+int Trap::getHit(){
+    return hit;
+}
+void Trap::setHit(int hit){
+    this->hit = hit;
 }
