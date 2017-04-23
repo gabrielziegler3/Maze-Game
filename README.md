@@ -8,7 +8,7 @@ O player deve evitar encostar nas armadilhas representadas pelos caracteres '#' 
 
 Bonus podem ser pegos quando o player encostar em caracteres do tipo '&' para receber diferentes tipos de bonus.
 
-Para vencer basta levar o player para o 8, porem o player perde uma vida a cada colisao com armadilhas, caso as vidas cheguem a 0 é decretado o Game Over.
+Para vencer basta levar o player para o '8' com pontuacao positiva, porem o player perde uma vida a cada colisao com armadilhas e perde pontuacao a cada movimento. Caso as vidas cheguem a 0 é decretado o Game Over.
 
 Ao fim do jogo se tiver passado com sucesso tera a chance de deixar seu nome na Lista dos Lendarios, reservada apenas para aqueles
 

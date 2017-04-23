@@ -1,0 +1,6 @@
+Player name: 		Score: 190
+Player name: 		Score: 50
+Player name: 		Score: 30
+Player name: 		Score: 10
+Player name: 		Score: 80
+Player name: g		Score: 1000
