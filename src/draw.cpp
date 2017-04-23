@@ -12,16 +12,20 @@ Draw::Draw(){}
 
 void Draw::drawTrapRandom(Trap * trap, Map *map){
     for(int i=0; i<10; i++){
-        trap[i].setPositionX(rand()%18+1);
-        trap[i].setPositionY(rand()%48+1);
+        do{
+        trap[i].setPositionX(rand()%19+1);
+        trap[i].setPositionY(rand()%49+1);
+    }while(map->positionMatrix(trap[i].getPositionX(), trap[i].getPositionY()) == '=' || map->positionMatrix(trap[i].getPositionX(), trap[i].getPositionY()) == '@' || map->positionMatrix(trap[i].getPositionX(), trap[i].getPositionY()) == '8');
         map->addElement(trap[i].getPositionX(), trap[i].getPositionY(), trap[i].getSprite());
     }
 }
 
 void Draw::drawBonusRandom(Bonus * bonus, Map *map){
     for(int i=0; i<10;i++){
-        bonus[i].setPositionX(rand()%18+1);
-        bonus[i].setPositionY(rand()%48+1);
+        do{
+        bonus[i].setPositionX(rand()%19+1);
+        bonus[i].setPositionY(rand()%49+1);
+    }while(map->positionMatrix(bonus[i].getPositionX(), bonus[i].getPositionY()) == '=' || map->positionMatrix(bonus[i].getPositionX(), bonus[i].getPositionY()) == '@' ||map->positionMatrix(bonus[i].getPositionX(), bonus[i].getPositionY()) == '8');
         map->addElement(bonus[i].getPositionX(), bonus[i].getPositionY(), bonus[i].getSprite());
     }
 }
