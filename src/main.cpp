@@ -68,8 +68,8 @@ int main(int argc, char const *argv[]) {
         draw->drawTrap(trap, map);
         draw->drawMap(map->getRawMatrix());
         player->move(map);
-        collision->hitBonus(player, map, player->getPositionY(), player->getPositionX());
-        collision->hitTrap(player, map, menu, player->getPositionY(), player->getPositionX());
+        collision->hitBonus(player, map, bonus, player->getPositionY(), player->getPositionX());
+        collision->hitTrap(player, map, trap, menu, player->getPositionY(), player->getPositionX());
         collision->hitEnd(player, map, menu, ranking, player->getPositionY(), player->getPositionX());
         refresh();
         // player->setAlive(false);
@@ -79,6 +79,7 @@ int main(int argc, char const *argv[]) {
             counter = 0;
         }
         counter++;
+        player->setScore(player->getScore() - 10); // Pontuacao decresce 10 pontos a cada movimento
         endwin();
     }
 

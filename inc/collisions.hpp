@@ -4,6 +4,8 @@
 #include "map.hpp"
 #include "menu.hpp"
 #include "rankinglist.hpp"
+#include "bonus.hpp"
+#include "trap.hpp"
 #include <iostream>
 
 using namespace std;
@@ -13,8 +15,8 @@ public:
     Collisions();
     ~Collisions();
 
-    void hitTrap(Player * player, Map* map, Menu * menu, int posx, int posy);
-    void hitBonus(Player * player, Map* map, int posx, int posy);
+    void hitTrap(Player * player, Map* map, Trap* trap, Menu * menu, int posx, int posy);
+    void hitBonus(Player * player, Map* map, Bonus * bonus, int posx, int posy);
     void hitEnd(Player * player, Map* map, Menu * menu, RankingList * ranking, int posx, int posy);
 };
 #endif
