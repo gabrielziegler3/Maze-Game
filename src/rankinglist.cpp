@@ -30,8 +30,8 @@ void RankingList::readList(){
 
     list.open("doc/playerlist.txt");
     char output[100];
-    if (list.is_open()) {
     clear();
+    if (list.is_open()) {
     while (!list.eof()) {
         list >> output;
         mvprintw(1,1, "%s", output);

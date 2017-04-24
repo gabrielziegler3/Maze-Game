@@ -1,8 +1,6 @@
 #include "../inc/gameobject.hpp"
 #include <iostream>
 
-GameObject::~GameObject(){}
-
 int GameObject::getPositionX(){
     return positionX;
 }
@@ -15,19 +13,9 @@ int GameObject::getPositionY(){
 void GameObject::setPositionY(int positionY){
     this->positionY = positionY;
 }
-
 char GameObject::getSprite(){
     return sprite;
 }
 void GameObject::setSprite(char sprite){
     this->sprite=sprite;
-}
-std::string GameObject::getColour(){
-    return colour;
-}
-void GameObject::setColour(std::string colour){
-    this->colour=colour;
-}
-
-void GameObject::move(){
 }

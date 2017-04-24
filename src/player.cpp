@@ -9,15 +9,13 @@ Player::Player(){
     setLife(3);
     setScore(0);
     setAlive(true);
-    setWinner(false);
     setPositionX(1);
     setPositionY(1);
 }
 
-Player::Player(char sprite, bool alive, bool winner, int life, int score, int positionX, int positionY, std::string name){
+Player::Player(char sprite, bool alive, int life, int score, int positionX, int positionY, std::string name){
     setSprite(sprite);
     setAlive(alive);
-    setWinner(winner);
     setLife(life);
     setScore(score);
     setPositionX(positionX);
@@ -33,12 +31,6 @@ bool Player::getAlive(){
 void Player::setAlive(bool alive){
     this->alive = alive;
 }
-bool Player::getWinner(){
-    return winner;
-}
-void Player::setWinner(bool winner){
-    this->winner = winner;
-}
 int Player::getLife(){
     return life;
 }
@@ -51,30 +43,14 @@ int Player::getScore(){
 void Player::setScore(int score){
     this->score = score;
 }
-int Player::getPositionX(){
-    return positionX;
-}
-void Player::setPositionX(int positionX){
-    this->positionX = positionX;
-}
-int Player::getPositionY(){
-    return positionY;
-}
-void Player::setPositionY(int positionY){
-    this->positionY = positionY;
-}
-char Player::getSprite(){
-    return sprite;
-}
-void Player::setSprite(char sprite){
-    this->sprite = sprite;
-}
-
 std::string Player::getName(){
     return name;
 }
 void Player::setName(std::string name){
     this->name = name;
+}
+char Player::getSprite(){
+    return sprite;
 }
 
 void Player::move(Map * map){

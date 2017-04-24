@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ncurses.h>
+
+
 void Menu::printDragon(){
     mvprintw(1, 1, "111111111111111111111111111111111111111111111111111111111\n");
     mvprintw(2, 1, "111111111111111111111111111111111¶¶¶111111111111111111111\n");
@@ -66,6 +68,7 @@ void Menu::printText(){
 void Menu::printWinner(Player * player){
     std::string aux;
     clear();
+    player->setAlive(false);
     printDragon();
     mvprintw(20, 100, "CONGRATULATIONS, YOU HAVE FINISHED ALL THE MAZE COURSE\n");
     mvprintw(21, 100, "\tNOW YOU GET THE CHANCE TO SIGN YOUR NAME IN THE \n");
@@ -175,4 +178,5 @@ void Menu::gameOver(Player * player){
     mvprintw(23, 35, "Press any key");
     getch();
     system("clear");
+    player->setAlive(false);
 }
