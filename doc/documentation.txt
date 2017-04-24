@@ -1,0 +1,40 @@
+Documentação - EP1 - Gabriel Ziegler 150166320
+
+Classes:
+
+- Bonus: Descreve posição e caracter do objeto além de a bonificação quando o jogador encostar no bonus.
+
+- Collisions: Responsável por detectar quando o jogador encostar em outros objetos no mapa como bônus, armadilhas e o fim do jogo ‘8’.
+
+- Draw: Responsável por desenhar no mapa armadilhas, bônus e jogador (bônus e armadilhas possuem métodos extra para gerarem posições aleatórias depois de um número de movimento do jogador).
+
+- GameObject: Classe abstrata com atributos e métodos comuns às classes Player, Bônus e Trap que herdam dela para utilização de polimorfismo.
+
+- Map: Classe responsável por ler as fases de arquivos .txt e alocar dinamicamente numa matriz, retornar posições para checar colisões, e adicionar elementos na matriz carregada com a fase.
+
+- Menu: Esta classe possui todos os textos e mensagens que podem ser imprimidos ao usuário: menu inicial, menu de game over, menu de vencedor.
+
+- Player: Classe que descreve e acessa os atributos do jogador (se está vivo ou não, quantidade de vidas, pontuação, posições x e y, caracter e o nome do jogador).
+
+- RankingList: Classe que escreve na lista de jogadores que finalizaram todas as fases e que acessa a lista para visualização.
+
+- Trap: Descreve posição e caracter do objeto além do dano quando o jogador encostar na armadilha.
+
+Relação de herança:
+GameObject é classe pai de Trap, Bônus e Player.
+
+exemplo de sobrecarga de construtor na class Player.
+
+Para compilar utilize make e para rodar utilize make run.
+
+Para movimentar o player utilize:
+
+W ou ↑- para mover para cima
+
+S ou ↓- para mover para baixo
+
+A ou ← - para mover para esquerda
+
+D ou → - para mover para direita
+
+PS: JOGUE COM O TERMINAL EM TELA CHEIA! :)

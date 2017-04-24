@@ -30,7 +30,12 @@ void Collisions::hitEnd(Player * player, Map * map, Menu * menu, RankingList * r
         if(player->getScore() < 0){
             menu->gameOver(player);
         }
-        else{
+        else if(map->getStage() < 2){
+            player->setPositionX(2);
+            player->setPositionY(2);
+            map->setStage(2);
+        }
+        else    {
             menu->printWinner(player);
             ranking->writeList(player);
         }

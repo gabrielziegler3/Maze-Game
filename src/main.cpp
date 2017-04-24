@@ -16,11 +16,12 @@
 int main(int argc, char const *argv[]) {
     bool initialize = false;
     int counter = 0;
+    
     //Sao instanciados objetos de todas classes
     Draw * draw = new Draw();
     Menu * menu = new Menu();
     Map * map = new Map();
-    Player * player = new Player('@', TRUE, FALSE, 3, 0, 2, 2, "Ziegler");
+    Player * player = new Player('@', TRUE, 3, 0, 2, 2, "Ziegler");
     Trap * trap = new Trap[10];
     Bonus * bonus = new Bonus[10];
     Collisions * collision = new Collisions();
@@ -46,18 +47,21 @@ int main(int argc, char const *argv[]) {
         clear();
         initscr(); // switch terminal screen to fullscreen curses mode
         start_color();
-        init_pair(1, COLOR_BLACK, COLOR_CYAN);
-        init_pair(2, COLOR_WHITE, COLOR_GREEN);
+        init_pair(1, COLOR_WHITE, COLOR_GREEN);
+        init_pair(2, COLOR_BLUE, COLOR_BLACK);
+        init_pair(3, COLOR_BLACK, COLOR_CYAN);
         cbreak(); // disable line buffering so that we get raw keystrokes
         keypad(stdscr, TRUE); // enable keypad mode (for arrow and fn keys)
         noecho(); // do not print the user's keystrokes to the screen
         curs_set(0); // make the cursor invisible
+
         map->allocRawMatrix();
-        attron(COLOR_PAIR(1));
+        attron(COLOR_PAIR(3));
+        printw("Stage: [%d]\n", map->getStage());
         printw("Score: [%d]\n", player->getScore());
         printw("Life: [%d]\n\n", player->getLife());
-        attroff(COLOR_PAIR(1));
-        attron(COLOR_PAIR(2));
+        attroff(COLOR_PAIR(3));
+        attron(COLOR_PAIR(map->getStage()));
         map->addElement(player->getPositionY(), player->getPositionX(), player->getSprite());
         if(initialize == false){
             draw->drawBonusRandom(bonus, map);
@@ -73,7 +77,7 @@ int main(int argc, char const *argv[]) {
         collision->hitEnd(player, map, menu, ranking, player->getPositionY(), player->getPositionX());
         refresh();
         // player->setAlive(false);
-        attroff(COLOR_PAIR(2));
+        attroff(COLOR_PAIR(map->getStage()));
         if(counter == 5){
             initialize = false;
             counter = 0;
