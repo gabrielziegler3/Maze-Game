@@ -16,36 +16,34 @@
 int main(int argc, char const *argv[]) {
     bool initialize = false;
     int counter = 0;
-    
+
     //Sao instanciados objetos de todas classes
     Draw * draw = new Draw();
     Menu * menu = new Menu();
     Map * map = new Map();
-    Player * player = new Player('@', TRUE, 3, 0, 2, 2, "Ziegler");
+    Player * player = new Player('@', TRUE, 3, 0, 2, 2, "Unknown Player");
     Trap * trap = new Trap[10];
     Bonus * bonus = new Bonus[10];
     Collisions * collision = new Collisions();
     RankingList * ranking = new RankingList();
 
     char ch=menu->mainMenu();
-    		switch(ch) {
+            switch(ch) {
+    			case 0:
+    				break;
     			case 1:
-    				break;
-    			case 2:
-                    clear();
-                    cbreak();
                     ranking->readList();
+                    getch();
     				break;
-                case 3:
-                    endwin();
+                case 2:
                     system("clear");
                     player->setAlive(false);
-                    return(0);
                 }
+
     while(player->getAlive() == true){
         // iniciacao do game
-        clear();
         initscr(); // switch terminal screen to fullscreen curses mode
+        clear();
         start_color();
         init_pair(1, COLOR_WHITE, COLOR_GREEN);
         init_pair(2, COLOR_BLUE, COLOR_BLACK);
@@ -76,7 +74,6 @@ int main(int argc, char const *argv[]) {
         collision->hitTrap(player, map, trap, menu, player->getPositionY(), player->getPositionX());
         collision->hitEnd(player, map, menu, ranking, player->getPositionY(), player->getPositionX());
         refresh();
-        // player->setAlive(false);
         attroff(COLOR_PAIR(map->getStage()));
         if(counter == 5){
             initialize = false;

@@ -18,25 +18,30 @@ void RankingList::writeList(Player * player){
         printw("Could not open Ranking file.");
     }
 
-    outfile << "Player name: " << player->getName() << "\t\tScore: " << player->getScore() << std::endl;
+    outfile << "Name: " << player->getName() << "\tScore: " << player->getScore() << std::endl;
 
-    outfile.close();
-
+    // outfile.close();
 }
 
 void RankingList::readList(){
-    std::string aux;
-    std::ifstream list;
-
-    list.open("doc/playerlist.txt");
-    char output[100];
-    clear();
-    if (list.is_open()) {
-    while (!list.eof()) {
-        list >> output;
-        mvprintw(1,1, "%s", output);
+    char getcontent[100];
+    int counter=0;
+    std::ifstream f("doc/playerslist.txt");
+    erase();
+    if (!f){
+        printw("Couldn't open ranking list");
+    }
+    else {
+        printw("***********LEGENDARY LIST***********\n");
+    }
+    while(f >> getcontent)
+    {
+        counter ++;
+        printw("%s \t", getcontent);
+        if(counter%4 == 0){
+            printw("\n");
         }
-   }
-   getch();
-   list.close();
+    }
+    printw("**********GODS AMONGST MEN**********\n");
+    f.close();
 }

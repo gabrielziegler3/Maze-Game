@@ -68,24 +68,22 @@ void Menu::printText(){
 void Menu::printWinner(Player * player){
     std::string aux;
     clear();
-    player->setAlive(false);
     printDragon();
     mvprintw(20, 100, "CONGRATULATIONS, YOU HAVE FINISHED ALL THE MAZE COURSE\n");
-    mvprintw(21, 100, "\tNOW YOU GET THE CHANCE TO SIGN YOUR NAME IN THE \n");
-    mvprintw(22, 100, "****LEGENDS LIST****\n");
-    mvprintw(23, 100, "SCORE: [%d]\n", player->getScore());
-    mvprintw(24, 100, "\t\tSIGN NAME: \n");
-    curs_set(1);
-    mvscanw(25, 100, "%s", &aux);
+    mvprintw(21, 100, "SCORE: [%d]\n", player->getScore());
+    std::cout << "Write your name" << '\n';
+    std::cin >> aux;
     player->setName(aux);
+    player->setAlive(false);
+    mvprintw(24, 100, "\t\t PRESS ENTER \n");
     getch();
 }
 
 int Menu::mainMenu() {
 	int c=0, ch;
 	initscr();
-	erase();
-	raw();
+	// erase();
+	// raw();
 	keypad(stdscr, TRUE);
 	noecho();
     curs_set(0);

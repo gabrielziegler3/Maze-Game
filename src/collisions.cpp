@@ -35,9 +35,10 @@ void Collisions::hitEnd(Player * player, Map * map, Menu * menu, RankingList * r
             player->setPositionY(2);
             map->setStage(2);
         }
-        else    {
+        else{
             menu->printWinner(player);
             ranking->writeList(player);
+            ranking->readList();
         }
     }
 }
