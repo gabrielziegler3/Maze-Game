@@ -2,10 +2,10 @@
 #include <iostream>
 
 Bonus::Bonus(){
-    setSprite('&');
-    setPositionX(2);
-    setPositionY(3);
-    setBonusScore(100);
+    this->sprite = '&';
+    this->positionX = 2;
+    this->positionY = 3;
+    this->bonusScore = 100;
 }
 Bonus::~Bonus(){}
 

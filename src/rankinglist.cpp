@@ -20,7 +20,7 @@ void RankingList::writeList(Player * player){
 
     outfile << "Name: " << player->getName() << "\tScore: " << player->getScore() << std::endl;
 
-    // outfile.close();
+    outfile.close();
 }
 
 void RankingList::readList(){
