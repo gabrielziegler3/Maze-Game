@@ -13,8 +13,18 @@
 #include <fstream>
 #include <cstdlib>
 
+void killObjects(Draw * draw, Menu * menu, Map * map, Player * player, Trap * trap, Bonus * bonus, Collisions * collision, RankingList * ranking) {
+    draw->~Draw();
+    menu->~Menu();
+    map->~Map();
+    player->~Player();
+    trap->~Trap();
+    bonus->~Bonus();
+    collision->~Collisions();
+    ranking->~RankingList();
+}
+
 int main(int argc, char const *argv[]) {
-    bool initialize = false;
     int counter = 0;
 
     //Sao instanciados objetos de todas classes
@@ -27,20 +37,24 @@ int main(int argc, char const *argv[]) {
     Collisions * collision = new Collisions();
     RankingList * ranking = new RankingList();
 
-    char ch=menu->mainMenu();
-            switch(ch) {
-    			case 0:
-    				break;
-    			case 1:
-                    ranking->readList();
-                    getch();
-    				break;
-                case 2:
-                    system("clear");
-                    player->setAlive(false);
-                }
+    char ch = menu->mainMenu();
+    switch(ch) {
+        case 0:
+            break;
+        case 1:
+            ranking->readList();
+            getch();
+            break;
+        case 2:
+            // system("clear");
+            player->setAlive(false);
+            endwin();
+            break;
+    }
 
-    while(player->getAlive() == true){
+    cout << player->getAlive();
+
+    while(player->getAlive()) {
         // iniciacao do game
         initscr(); // switch terminal screen to fullscreen curses mode
         clear();
@@ -60,29 +74,30 @@ int main(int argc, char const *argv[]) {
         printw("Life: [%d]\n\n", player->getLife());
         attroff(COLOR_PAIR(3));
         attron(COLOR_PAIR(map->getStage()));
+
         map->addElement(player->getPositionY(), player->getPositionX(), player->getSprite());
-        if(initialize == false){
-            draw->drawBonusRandom(bonus, map);
-            draw->drawTrapRandom(trap, map);
-            initialize = true;
-        }
+
         draw->drawBonus(bonus, map);
         draw->drawTrap(trap, map);
         draw->drawMap(map->getRawMatrix());
+        if(counter % 3)
+            draw->refreshMap(map, bonus, trap);
+
         player->move(map);
+
         collision->hitBonus(player, map, bonus, player->getPositionY(), player->getPositionX());
         collision->hitTrap(player, map, trap, menu, player->getPositionY(), player->getPositionX());
         collision->hitEnd(player, map, menu, ranking, player->getPositionY(), player->getPositionX());
+
         refresh();
+
         attroff(COLOR_PAIR(map->getStage()));
-        if(counter == 5){
-            initialize = false;
-            counter = 0;
-        }
         counter++;
-        player->setScore(player->getScore() - 10); // Pontuacao decresce 10 pontos a cada movimento
+
+        // player->setScore(player->getScore() - 10); // Every move, player loses 10 points
         endwin();
     }
+    killObjects(draw, menu, map, player, trap, bonus, collision, ranking);
 
     return 0;
 }

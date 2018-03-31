@@ -15,7 +15,7 @@ public:
     char **getRawMatrix();
     char **allocRawMatrix();
     char positionMatrix(int posx, int posy);
-    
+
     int getColumn();
     void setColumn(int column);
     int getRow();

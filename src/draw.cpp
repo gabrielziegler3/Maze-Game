@@ -8,9 +8,10 @@
 #include <cstdlib>
 #include <fstream>
 
-Draw::Draw(){}
+Draw::Draw(){
+}
 
-void Draw::drawTrapRandom(Trap * trap, Map *map){
+void Draw::drawTrapRandom(Trap * trap, Map * map){
     for(int i=0; i<10; i++){
         do{
         trap[i].setPositionX(rand()%19+1);
@@ -20,7 +21,7 @@ void Draw::drawTrapRandom(Trap * trap, Map *map){
     }
 }
 
-void Draw::drawBonusRandom(Bonus * bonus, Map *map){
+void Draw::drawBonusRandom(Bonus * bonus, Map * map){
     for(int i=0; i<10;i++){
         do{
         bonus[i].setPositionX(rand()%19+1);
@@ -30,12 +31,12 @@ void Draw::drawBonusRandom(Bonus * bonus, Map *map){
     }
 }
 
-void Draw::drawTrap(Trap * trap, Map *map){
+void Draw::drawTrap(Trap * trap, Map * map){
     for(int i=0; i<10;i++){
         map->addElement(trap[i].getPositionX(), trap[i].getPositionY(), trap[i].getSprite());
     }
 }
-void Draw::drawBonus(Bonus * bonus, Map *map){
+void Draw::drawBonus(Bonus * bonus, Map * map){
     for(int i=0; i<10;i++){
         map->addElement(bonus[i].getPositionX(), bonus[i].getPositionY(), bonus[i].getSprite());
     }
@@ -50,4 +51,9 @@ void Draw::drawMap(char **matrix){
              }
         }
     }
+}
+
+void Draw::refreshMap(Map * map, Bonus * bonus, Trap * trap){
+    drawBonusRandom(bonus, map);
+    drawTrapRandom(trap, map);
 }

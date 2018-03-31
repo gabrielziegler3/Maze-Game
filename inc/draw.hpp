@@ -17,5 +17,6 @@ public:
     void drawTrapRandom(Trap * trap, Map * map);
     void drawBonusRandom(Bonus * bonus, Map *map);
     void drawMap(char **matrix);
+    void refreshMap(Map * map, Bonus * bonus, Trap * trap);
 };
 #endif
