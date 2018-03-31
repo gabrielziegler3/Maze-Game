@@ -2,3 +2,7 @@
 *.pch
 *.swp
 *.gch
+bin/*
+obj/*
+!.gitkeep
+
