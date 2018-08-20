@@ -59,7 +59,7 @@ int main(int argc, char const *argv[]) {
         initscr(); // switch terminal screen to fullscreen curses mode
         clear();
         start_color();
-        init_pair(1, COLOR_WHITE, COLOR_GREEN);
+        init_pair(1, COLOR_WHITE, COLOR_RED);
         init_pair(2, COLOR_BLUE, COLOR_BLACK);
         init_pair(3, COLOR_BLACK, COLOR_CYAN);
         cbreak(); // disable line buffering so that we get raw keystrokes
@@ -80,6 +80,7 @@ int main(int argc, char const *argv[]) {
         draw->drawBonus(bonus, map);
         draw->drawTrap(trap, map);
         draw->drawMap(map->getRawMatrix());
+        // redraw elements in map
         if(counter % 3)
             draw->refreshMap(map, bonus, trap);
 
@@ -94,7 +95,7 @@ int main(int argc, char const *argv[]) {
         attroff(COLOR_PAIR(map->getStage()));
         counter++;
 
-        // player->setScore(player->getScore() - 10); // Every move, player loses 10 points
+        player->setScore(player->getScore() - 10); // Every move, player loses 10 points
         endwin();
     }
     killObjects(draw, menu, map, player, trap, bonus, collision, ranking);

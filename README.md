@@ -1,29 +1,52 @@
-# Maze Game - UnB
+# aMAZEd Terminal
 
-Este projeto consiste em um jogo de labirinto em C++ produzido por Gabriel Ziegler para a disciplina de Orientacao a objetos na Universidade de Brasilia.
+![Main Menu](images/mainmenu.png)
+## About
 
-O player é representado no jogo pelo caracter **@**.
+This game is a project for the Object Orientation Programming course in [University of Brasilia](https://www.unb.br/).
 
-O player deve evitar encostar nas armadilhas representadas pelos caracteres **#** que irao se movimentar aleatoriamente pelo mapa
+Things to note before playing:
 
-Bonus podem ser pegos quando o player encostar em caracteres do tipo **&** para receber diferentes tipos de bonus.
+* The player is represented by the `@` symbol.
 
-Para vencer basta levar o player para o **8** com pontuacao positiva, porem o player perde uma vida a cada colisao com armadilhas e perde pontuacao a cada movimento. Caso as vidas cheguem a 0 é decretado o Game Over.
+* Traps are represented by the `#` symbol, running into them will cause you to lose a life!
 
-Ao fim do jogo se tiver passado com sucesso tera a chance de deixar seu nome na Lista dos Lendarios, reservada apenas para aqueles
+* Bonuses can and shall be caught as you find your way out, they look like this: `&`.
 
-que merecem estar la.
+* The exit of the maze is the `8` on the map. That's your main goal!
 
-Para movimentar o player utilize:
+In order to win, the player must reach the exit with a **positive score** and with at least 1 life remaning.
 
-```
-W ou ↑- para mover para cima
+![](images/stage2.png)
 
-S ou ↓- para mover para baixo
+## Player controls
 
-A ou ← - para mover para esquerda
+<kbd>W</kbd> or <kbd>↑</kbd> - move **up**
 
-D ou → - para mover para direita
-```
+<kbd>S</kbd> or <kbd>↓</kbd> - move **down**
 
-### JOGUE COM O TERMINAL EM TELA CHEIA! :)
+<kbd>A</kbd> or <kbd>←</kbd> - move **left**
+
+<kbd>D</kbd> or <kbd>→</kbd> - move **right**
+
+For the best experience, play with your terminal in fullscreen.
+
+## Dependencies
+
+For debian based(Ubuntu, Fedora, Debian, etc.):
+
+`sudo apt-get install libncurses5-dev`
+
+## Running the game
+
+Clone the repo:
+
+* `$ git clone https://github.com/gabrielziegler3/Maze-Game.git`
+
+Move inside it and build it with Makefile.
+
+* `cd Maze-Game && make`
+
+Execute it:
+
+* `make run`
